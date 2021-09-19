@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Form Complete{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <section class='messages'>
+        {% for category, msg in messages %}
+        <div>
+            <p class={{category}}>{{msg}}</p>
+        </div>
+        {% endfor %}
+    </section>  
+    {% endif %}
+{% endwith %}
+
+<h2>Thank you for participating in our survey!</h2>
+<div>
+    <p>Your answers have been recorded. Goodbye!</p>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,16 @@
+body {
+    background-color: lightcyan;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2, div, form {
+    text-align: center;
+}
+
+.messages {
+    background-color: rgba(255,0,0,0.3);
+    border-radius: 1rem;
+    width: 50%;
+    margin:auto;
+    padding: 1px;
+}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Survey Question{% endblock%}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <section class='messages'>
+        {% for category, msg in messages %}
+        <div>
+           <p class={{category}}>{{msg}}</p> 
+        </div>
+        {% endfor %}
+    </section>  
+    {% endif %}
+{% endwith %}
+
+<h2>{{question}}</h2>
+
+<div>
+    <form action='/answer' name='q_form' method='POST'>
+        {% for choice in choices %}
+        <input type='radio' id='{{choice}}' name='question{{q_num}}' value='{{choice}}' required>
+        <label for='{{choice}}'>{{choice}}</label><br>
+        {% endfor %}
+        <input type='hidden' name='question_num' value={{q_num}}>
+        <button>Submit</button> 
+    </form>
+</div>
+
+
+
+{% endblock %}
