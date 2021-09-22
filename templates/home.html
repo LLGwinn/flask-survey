@@ -10,7 +10,10 @@
     <p>
         {{instructions}}
     </p>
-    <form action='/questions/{{q_num}}'>
+    <!-- <form action='/questions/{{q_num}}'>
+        <button type='submit'>Start Survey</button>
+    </form> -->
+    <form action='/survey-responses' method='POST'>
         <button type='submit'>Start Survey</button>
     </form>
 </div>
