@@ -16,10 +16,20 @@
     {% endif %}
 {% endwith %}
 
-<h2>Thank you for participating in our survey!</h2>
+<h2>Thank you for participating in the {{survey.title}}!</h2>
 <div>
-    <p>Your answers have been recorded. Goodbye!</p>
+    <p>Your answers:</p>
+    <ul>
+        {% for question in survey.questions %}
+        <li>
+            <b>{{ question.question }}:</b>
+            {{ responses[loop.index0]["choice"] }}
+            <i>{{ responses[loop.index0]["text"] }}</i>
+          </li>
+        {% endfor %}
+    </ul>
+    
 </div>
 
-
 {% endblock %}
+

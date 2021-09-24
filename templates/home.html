@@ -1,21 +1,33 @@
 {% extends 'base.html' %}
 
-{% block title %}Satisfaction Survey{% endblock%}
+{% block title %}Choose Your Survey {% endblock %}
 
 {% block content %}
 
-<h1>{{title}}</h1>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <section class='messages'>
+        {% for category, msg in messages %}
+        <div>
+            <p class={{category}}>{{msg}}</p>
+        </div>
+        {% endfor %}
+    </section>  
+    {% endif %}
+{% endwith %}
 
-<div>
-    <p>
-        {{instructions}}
-    </p>
-    <!-- <form action='/questions/{{q_num}}'>
-        <button type='submit'>Start Survey</button>
-    </form> -->
-    <form action='/survey-responses' method='POST'>
-        <button type='submit'>Start Survey</button>
-    </form>
-</div>
+<h1>Welcome to the Survey App!</h1>
+
+<form method='POST'>
+    <label for 'survey-selector'>Choose a survey:</label>
+    <select name='survey_selector'>
+        {% for code, survey in surveys.items() %}
+        <option value='{{code}}'>{{survey.title}}</option>
+        {% endfor %} 
+    </select>
+    <button>Submit</button>
+</form>
+
 
 {% endblock %}
+

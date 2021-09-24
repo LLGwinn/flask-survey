@@ -16,19 +16,21 @@
     {% endif %}
 {% endwith %}
 
-<h2>{{question}}</h2>
+<h2>{{question.question}}</h2>
 
 <div>
-    <form action='/answer' name='q_form' method='POST'>
-        {% for choice in choices %}
-        <input type='radio' id='{{choice}}' name='question{{q_num}}' value='{{choice}}' required>
-        <label for='{{choice}}'>{{choice}}</label><br>
+    <form action='/answer' method='POST'>
+        {% for choice in question.choices %}
+        <input type='radio' name='answer' value='{{choice}}' required>
+        <label for='answer'>{{choice}}</label><br>
         {% endfor %}
+        {% if question.allow_text %}
+        <textarea name='text'></textarea>
+        {% endif %}
         <input type='hidden' name='question_num' value={{q_num}}>
         <button>Submit</button> 
     </form>
 </div>
 
-
-
 {% endblock %}
+
